@@ -13,5 +13,5 @@ author: Oriel # Add name author (optional)
 
 要不来我的另一个博客看看？[我的博客][我的博客]。
 
-[我的博客]: https://www.baidu.com 
+[我的博客]: https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=%E9%AA%97%E4%BD%A0%E7%9A%84%E4%BD%A0%E4%B9%9F%E4%BF%A1&rsv_pq=8ee6b30500012147&rsv_t=ae32q5lQFLLfeo9UkyY3eaQxtYSXYLly2r4QE9N2yhbTvacryqvI4z95By8&rqlang=cn&rsv_enter=1&rsv_sug3=17&rsv_sug1=8&rsv_sug7=100&rsv_sug2=0&inputT=3534&rsv_sug4=4312  
 
