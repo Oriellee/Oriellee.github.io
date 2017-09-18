@@ -9,20 +9,20 @@ baseurl: https://oriellee.github.io # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Author settings
-author: oriel yan # add your name
+author: Oriel Yan # add your name
 author-pic: logo.jpg
 about-author: lazy~
 
 # Contact links
-# email: # Add your Email address
-phone: # Add your Phone number
-website: # Add your website, do not add http://
-linkedin: # Add your Linkedin handle
+email: 2323192059@qq.com # Add your Email address
+phone: #  # Add your Phone number
+website: #  # Add your website, do not add http://
+linkedin: #  # Add your Linkedin handle
 github: oriellee # Add your Github handle
-twitter: '@artemsheludko_' # Add your Twitter handle
-facebook: # Add your Facebook handle
-instagram: # Add your Instagram handle
-pinterest: # Add your Pinterest handle
+twitter: '@OrielYan' # Add your Twitter handle
+facebook: OrielYan  # Add your Facebook handle
+instagram: # # Add your Instagram handle
+pinterest: #  # Add your Pinterest handle
 
 # Newsletter
 mailchimp: # Add your MailChimp form identifier.
