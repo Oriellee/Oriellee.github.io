@@ -67,13 +67,17 @@ author: Oriel # Add name author (optional)
 ![history]({{site.baseurl}}/assets/img/201703/history.png)
 
 #### 上传与同步
-现在，你已经在本地创建了你的第一个仓库和文件，接下来，我们需要把本地的文件和仓库上传和同步到我们的github中。点击右上角的publish,输入对于改文件的描述后，即可上传。
+你已经在本地创建了你的第一个仓库和文件，接下来，我们需要把本地的文件和仓库上传和同步到我们的github中。点击右上角的publish,输入对于改文件的描述后，即可上传。
 
 ![publish]({{site.baseurl}}/assets/img/201703/publish.png)
 
 当你的代码库上传后就会发现，原来的publish已经变为了Sync。  点击Sync同步代码库！
 
+------------
+
+
 **现在我们已经完成了github的安装和注册，同时也新建了我们的第一个仓库和第一个文档。在下一篇教程中，我会介绍一下github的分支部分。下一篇见啦~**
+
 
 
 
