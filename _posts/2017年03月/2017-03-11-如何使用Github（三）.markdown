@@ -1,0 +1,77 @@
+---
+layout: post
+title:  如何使用Github（三）
+date:   2017-03-15 09:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: 201703/git-bg.jpg # Add image post (optional)
+tags: [github,教程]
+author: Oriel # Add name author (optional)
+---
+**在这一篇中，我会讲一下github中的fork和pull请求具体的操作。**
+
+其实github的fork功能即是 服务端的仓库克隆，包含了原来的仓库（即upstream repository，上游仓库）所有内容，如分支、Tag、提交；代码托管服务（如Github、BitBucket）提供了方便的完成Fork操作的功能（在仓库页面点一下Fork按钮）。这样有了一个你自己的可以自由提交的仓库，然后可以通过的PullRequest把你的提交贡献回 原仓库。
+
+## Fork一个repositories
+点击打开[我的github](https://github.com/Oriellee/oriellee.github.io"),此时你就可以看到我的github中仓库和项目，如果你觉得这个模板还不错，想要拷贝的话只需要点击页面右上角的Fork即可把该项目复刻到自己github中。
+
+![fork]({{site.baseurl}}/assets/img/201703/fork.png)
+
+或者你也可以点击fork旁边的star选择关注我。这个功能有点类似于Twitter中的follow功能。
+
+已经fork到自己仓库的项目就可以使用github的客户端clone到本地了。并且可以再本地进行修改可同步。
+
+![fork_clone]({{site.baseurl}}/assets/img/201703/fork_clone.png)
+
+##新建一个pull请求
+如果你在一个fork的项目中发现了一个bug或者是有更好的书写方式，那么要通过什么方式去告诉原作者呢？这个时候我们就可以使用github的pull功能了。
+顾名思义，pull请求是推送一个请求。
+
+![pull1]({{site.baseurl}}/assets/img/201703/pull1.png)
+
+当你修改了项目中的代码，且想要推送代码到原作者的代码中时，点击客户端或者网页上的Pull Request发布。 我们这里点击Pull Request
+
+![pull2]({{site.baseurl}}/assets/img/201703/pull2.png)
+
+
+我们填写好必要的说明性文字 点击Send Pull Request 点击，进入查看原作者的评论，同时你也可以在下面进行评论和留言讨论相关的代码。
+### 讨论和审核代码
+>讨论和审查你的代码 Discuss and review your code 一旦拉入请求已被打开，人或团队审查您的变化可能有疑问或意见。也许编码风格不匹配项目的指导方针，改变缺少单元测试，或者也许一切看起来不错，道具都是为了。引入请求旨在鼓励并捕获这种类型的对话。您还可以继续推送到你的分支在你提交的讨论和反馈光。如果有人评论说，你忘了做某件事，或者如果在代码中的错误，你可以在你的分支修复它，推高的变化。GitHub上会显示新的提交和其他任何意见，你可能会收到统一拉请求视图。 拉请求的意见都写在降价，所以你可以插入图片和表情符，使用预先格式化的文本块，等轻质格式。
+
+### 部署代码
+> 部署 Deploy 一旦你拉的请求进行了审查和部门通过你的测试，您可以部署您的更改，以验证他们的生产。如果你的分支造成的问题，您可以通过部署现有的主投产回滚。
+
+### 合并代码
+关于合并代码，与之前所讲的合并两个分支的操作类似，再次我们就不赘述了。
+
+### 使用技巧
+
+关于github客户端的问题，大体上已经讲的差不多了，接下来我们来讲几个使用github中的快捷方式。
+
+搜索项目如何高效的搜索一个你想要的库呢？ 我们常常评判一个项目的标准有star数目，fork数目和跟新时间。
+
+> 通过搜索命令starsstars:>1000
+
+> 表示star数目大于1000。forkfork:>1000
+
+语言搜索java，html等等综合一下就是，比如你要查找一个stars大于1000的，fork大于200的java代码。stars:>1000 fork:>200 java。
+
+
+------------
+
+**好了，关于github客户端的使用大体就这么多了。终于写完了这一系列，过程中可能会有某些错误和解释不清的地方，欢迎指正。**
+
+
+
+
+文中图片及部分文字by：[杨晓辉](https://www.zhihu.com/question/20070065/answer/117017972 "杨晓辉")
+
+
+
+
+
+
+
+
+
+
+

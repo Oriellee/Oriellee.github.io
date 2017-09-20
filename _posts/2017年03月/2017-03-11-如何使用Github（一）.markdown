@@ -4,7 +4,7 @@ title:  如何使用Github（一）
 date:   2017-03-10 09:00:00 +0800
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: 201703/git-bg.jpg # Add image post (optional)
-tags: [git,教程]
+tags: [github,教程]
 author: Oriel # Add name author (optional)
 ---
 **说到什么是Github，我们先看一下[维基](https://zh.wikipedia.org/wiki/GitHub "维基")对于它的描述：“GitHub是一个通过Git进行版本控制的软件源代码托管服务，由GitHub公司（曾称Logical Awesome）的开发者Chris Wanstrath、PJ Hyett和Tom Preston-Werner使用Ruby on Rails编写而成。**

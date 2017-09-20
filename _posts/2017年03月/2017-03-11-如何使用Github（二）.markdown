@@ -4,7 +4,7 @@ title:  如何使用Github（二）
 date:   2017-03-11 09:00:00 +0800
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: 201703/git-bg.jpg # Add image post (optional)
-tags: [git,教程]
+tags: [github,教程]
 author: Oriel # Add name author (optional)
 ---
 **在[上一篇](https://oriellee.github.io/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEGIT/ "上一篇")中我们讲了如何安装注册github，以及如何创建一个新的github仓库。今天我要介绍一下github的分支，以及分支的使用。在开发软件时，可能有多人同时为同一个软件开发功能或修复BUG，可能存在多个Release版本，并且需要对各个版本进行维护。所幸，Git的分支功能可以支持同时进行多个功能的开发和版本管理。**
@@ -57,7 +57,7 @@ author: Oriel # Add name author (optional)
 
 ------------
 
-**github中分支的部门就简单讲完了。下一篇我会介绍一下github的团队合作与pull请求。**
+**github中分支的部分就简单讲完了。下一篇我会介绍一下github的团队合作与pull请求。**
 
 
 文中图片及部分文字by：[杨晓辉](https://www.zhihu.com/question/20070065/answer/117017972 "杨晓辉")
