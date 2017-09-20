@@ -15,6 +15,17 @@ author: Oriel # Add name author (optional)
 
 文章段落3
 
+###  文章中的小段落标题。
+
+## 二级段落标题
+
+
+{{ page.content | number_of_words }}
+
+
+* 文章
+* 列表
+
 ![Yosh Ginsu]({{site.baseurl}}/assets/img/yosh-ginsu.jpg)
 
 文章段落四，添加图片时直接输入图片的地址即可。
