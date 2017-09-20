@@ -21,7 +21,7 @@ author: Oriel # Add name author (optional)
 注册好以后你就可以开始你的github之旅啦~
 ### 二、创建第一个项目
 1.现在我们就可以打开github的客户端了。github的客户端界面看起来相当的简约清爽。
-![github界面](({{site.baseurl}}/assets/img/github界面.png))
+![github界面]({{site.baseurl}}/assets/img/github界面.png)
 在github客户端的右上角你会看到一个齿轮形状的按钮，点击齿轮，选择【options】就会弹出一个登录设置的界面。
 2.在登录界面中点击【add account】按钮，即可输入你刚才注册好的github账号进行登录了。
-![github登录](({{site.baseurl}}/assets/img/201703/git-bg.jpg))
+![github登录]({{site.baseurl}}/assets/img/201703/git-bg.jpg)
