@@ -1,0 +1,73 @@
+---
+layout: post
+title:  如何使用Github（二）
+date:   2017-03-11 09:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: 201703/git-bg.jpg # Add image post (optional)
+tags: [git,教程]
+author: Oriel # Add name author (optional)
+---
+**在[上一篇](https://oriellee.github.io/%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEGIT/ "上一篇")中我们讲了如何安装注册github，以及如何创建一个新的github仓库。今天我要介绍一下github的分支，以及分支的使用。在开发软件时，可能有多人同时为同一个软件开发功能或修复BUG，可能存在多个Release版本，并且需要对各个版本进行维护。所幸，Git的分支功能可以支持同时进行多个功能的开发和版本管理。**
+
+#### 什么是分支？
+分支是为了将修改记录的整体流程分叉保存。分叉后的分支不受其他分支的影响，所以在同一个数据库里可以同时进行多个修改。
+
+在github客户端中，我们暂时不需要考虑分支的详细原理，至于要了解他的大概作用和如何使用即可。
+
+#### 创建分支
+点击Create new branch创建第一个分支，取名为new master。
+
+![new_master]({{site.baseurl}}/assets/img/201703/new_master.png)
+
+此时，你会发现github自动切换到了我们刚出案件的分支上。
+
+![new_branch]({{site.baseurl}}/assets/img/201703/new_branch.png)
+
+此时，右击仓库，代开仓库的local path。编辑之前的文本。
+>创建的第一分支。
+
+打开github进行，填写Summary和Description。之后我们点击Commit to new-master在History目录下，我们可以看到会有两条主线，分别是master和new-master并且在new-master的分支下又一个蓝色的实线空心圈和一个虚线空心圈。实线圈表示当前的节点，空心圈表示下一次修改时的节点。
+
+![new_branch2]({{site.baseurl}}/assets/img/201703/new_branch2.png)
+
+#### 切换分支
+点击分支名称就会显示分支列表，选择分支后切换。
+
+![change_branch]({{site.baseurl}}/assets/img/201703/change_branch.png)
+
+
+#### 上传、同步分支
+分支的上传和同步与上传仓库是同样的操作。点击右上角的publish/sync即可上传或同步。
+
+#### 删除分支
+首先切换分支到你所要删除的分支下，例如切换到new master分支下，点击右上角的齿轮，选择Delete new master就会弹出一个对话框，询问删除的内容。
+
+![ask]({{site.baseurl}}/assets/img/201703/ask.png)
+
+- 第一个yes ，Delete both是将本地与网页全部删除；
+- 第二个Delete local only仅仅是删除本地。
+- 第三个是取消。
+
+#### 合并分支
+最后一个需要了解的是如何合并分支，如果想要将主分支与已修改后的新分支合并，那么我们需要先切换到主分支下，点击左上角的Update from new-branch进行分支的合并。
+
+![concat_branch]({{site.baseurl}}/assets/img/201703/concat_branch.png)
+
+
+
+------------
+
+**github中分支的部门就简单讲完了。下一篇我会介绍一下github的团队合作与pull请求。**
+
+
+文中图片及部分文字by：[杨晓辉](https://www.zhihu.com/question/20070065/answer/117017972 "杨晓辉")
+
+
+
+
+
+
+
+
+
+
