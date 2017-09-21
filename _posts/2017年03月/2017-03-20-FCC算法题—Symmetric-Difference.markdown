@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  FCC算法题—Symmetric-Difference
+title:  FCC算法题—Symmetric Difference
 date:   2017-03-20 09:00:00 +0800
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
 img: 201703/bg/freecodecamp.png # Add image post (optional)
-tags: [FCC]
+tags: [FCC，算法]
 author: Oriel # Add name author (optional)
 ---
 ## **Symmetric Difference**
