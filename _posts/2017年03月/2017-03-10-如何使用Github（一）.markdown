@@ -3,7 +3,7 @@ layout: post
 title:  如何使用Github（一）
 date:   2017-03-10 09:00:00 +0800
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-img: 201703/git-bg.jpg # Add image post (optional)
+img: 201703/bg/git-bg.jpg # Add image post (optional)
 tags: [github,教程]
 author: Oriel # Add name author (optional)
 ---
