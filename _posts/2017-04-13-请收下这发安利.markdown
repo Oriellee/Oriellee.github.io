@@ -1,0 +1,20 @@
+---
+layout: post
+title:  请收下这发安利
+date:   2017-04-13 09:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: 201703/bg/udacity.png # Add image post (optional)
+tags: [安利,git]
+author: Oriel # Add name author (optional)
+---
+**今天的博主要是来安利的，是的，你没看错。安利，安利一个好用的学习网站。。。庄子曾经说过：‘吾生也有涯，而知也无涯。~~以有涯随无涯，殆已！~~’。后两句忽略，我们这里只需要注意前两句就够了。:joy: 作为一个程序员，不断的学习是获取~~金钱~~技能最好的方式。那么学习网站哪家强呢？无疑就是今天我要推荐的[优达学城](http://cn.udacity.com/ "优达学城")（Udacity）。**
+
+------------
+
+
+Udacity是由Sebastian Thrun, David Stavens和Mike Sokolsky注资的一个私立教育组织，它的目标是实现民主教育。
+在2011年，斯坦福大学开创了免费计算机科学的课堂。 截至2012年九月, Udacity有12个开放课堂。 Thrun声明在斯坦福的以前人工智能介绍的课堂已有16万学生注册后，他希望50万学生会注册， 以及截至2012年3月九千位学生已经注册开始的2堂课。 Udacity在2012年DLD大会上被推广。 Udacity由风投公司Charles River Ventures和Thrun个人资金30万美元注资。2014年取消证书制度推出纳米学位（Nanodegree）。在2016年4月，进驻中国推出优达学城。
+
+之前写过几篇简单的github的使用教程。在当时之所以没有继续写git的使用教程，是因为博主在当年初次接触git的时候特别的蒙圈，很多地方配置不对，甚至对于git是用来做什么的也不太了解。不断的翻看网上的各种教程时发现一个很大的问题，那就是总有些地方看不懂。。。:joy:直到看到了优达学城的关于git和github的课程。大概用了一周的时间吧，看完了全课程后才发现通过这样详细而系统的讲解，之前关于使用git和github中不清楚的地方全部得到了解答。优达学城的课程特色在于会从初学者的角度看待课程，很多东西讲解的都很详细而生动。也特别的系统。
+
+下面附上[如何使用 Git 和 GitHub（中/英）](https://cn.udacity.com/course/how-to-use-git-and-github--ud775 "如何使用 Git 和 GitHub（中/英）")的地址，请各位看官吃下我这一发安利。。。。。。
