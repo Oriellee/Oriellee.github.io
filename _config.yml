@@ -27,7 +27,7 @@ pinterest: # Add your Pinterest handle
 # Newsletter
 mailchimp: # Add your MailChimp form identifier.
 
-Disqus 开放此处的话是开放评论。
+# Disqus 开放此处的话是开放评论。
 discus_identifier: mr-brown  # Add your discus identifier
 
 # Tracker 去掉下面一行的井号开放订阅号。
