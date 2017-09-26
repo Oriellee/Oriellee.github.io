@@ -21,6 +21,7 @@ author: Oriel # Add name author (optional)
 
 本实例主要考察的是对json的调用。根据[入口](http://www.mediawiki.org/wiki/API:Main_page "入口")所显示，我们可以看出调用维基百科的端点URL是：https://zh.wikipedia.org/w/api.php。 且需要传回format、action、prop、rvprop等作为数据。
 
+
 ![维基]({{site.baseurl}}/assets/img/201703/维基浏览.png)
 
 
