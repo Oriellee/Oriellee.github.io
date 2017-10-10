@@ -1,0 +1,340 @@
+---
+layout: post
+title:  简单的番茄钟
+date:   2017-05-02 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: 201703/bg/time.jpg # Add image post (optional)
+tags: [DEMO,FCC]
+author: Oriel # Add name author (optional)
+---
+**如果说时间是人类最富有的财富的话，那么拖延症就是人类在赚取财富道路上最大的绊脚石。从古至今，有无数人绊倒在拖延症这个坑里。作为一个自制力不够的人，这时候就需要一款行之有效的工具来帮助我们跨过拖延症这个坑了。而[番茄钟](https://baike.baidu.com/item/%E7%95%AA%E8%8C%84%E9%92%9F/5944754?fr=aladdin "番茄钟")当然是最为有效的工具软件之一。**
+
+DEMO：[番茄钟](https://oriellee.github.io/FCC/%E7%95%AA%E8%8C%84%E9%92%9F/index.html "番茄钟")
+
+![截图]({{site.baseurl}}/assets/img/201703/番茄钟.png)
+
+这个小练习中难点：
+1. 随时间不断上升的动态背景。
+2. 工作和休息时间的切换。
+
+而其中，第一点可以通过设置div的position为absolute，然后父辈设置overflow为hidden，这样可以通过计时器不断的调整div的top来形成水面上升的动画。
+第关于第二个难点，我们可以设置几个初始的变量，然后根据判断这几个变量的值来判断当前的时间为休息时间还是工作时间，进而进行下一步的操作。
+
+具体代码：
+
+HTML:
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+    <title>番茄钟</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <div id="box">
+        <h1 id="title">TIME</h1>
+        <div id="menu">
+            <div id="break">
+                <p>BREAK LENGTH</p>
+                <button id="breakLess" class="less">-</button>
+                <span id="breakText">2</span>
+                <button id="breakAdd" class="add">+</button>
+            </div>
+            <div id="session">
+                <p>SESSION LENGTH</p>
+                <button id="sessionLess" class="less">-</button>
+                <span id="sessionText">2</span>
+                <button id="sessionAdd" class="add">+</button>
+            </div>
+        </div>
+        <div id="time">
+            <span id="timeBack"></span>
+            <p id="timeText">Session</p>
+            <p id="timeNum">2</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
+```
+CSS:
+```css
+body {
+    background-color: #333333;
+    color: #fff;
+    margin: 0px;
+    padding: 0px;
+}
+
+a:focus,
+input:focus,
+p:focus,
+div:focus {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+#box {
+    width: 60%;
+    min-width: 420px;
+    min-height: 300px;
+    margin: 80px auto;
+}
+
+#title {
+    display: block;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    font-family: 'Pacifico';
+    font-size: 3em;
+}
+
+#menu {
+    width: 100%;
+    display: flex;
+    margin: 30px 0;
+    text-align: center;
+}
+
+#break,
+#session {
+    display: block;
+    width: 50%;
+}
+
+#break p,
+#session p {
+    margin: 10px 0px;
+    font-family: Open Sans, Arial;
+    font-size: 0.5em;
+}
+
+#breakText,
+#sessionText {
+    font-family: Open Sans, Arial;
+    font-size: 1.8em;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: bold;
+}
+
+#menu button {
+    font-size: 1.5em;
+    background-color: #333333;
+    color: #fff;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+#menu button:hover {
+    color: #989898;
+}
+
+#time {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border: 4px solid #333333;
+    box-shadow: 0 0 0 2px #99CC00;
+    border-radius: 50%;
+    font-size: 2em;
+    cursor: pointer;
+    position: relative;
+    z-index: 20;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#timeText,
+#timeNum {
+    font-size: 1.5em;
+    height: 25%;
+    font-family: Open Sans, Arial;
+    margin: 50px 0 0 0;
+    text-align: center;
+}
+
+#timeNum {
+    font-size: 2em;
+    height: 35%;
+}
+
+#timeBack {
+    height: 300px;
+    width: 300px;
+    background-color: #99CC00;
+    position: absolute;
+    z-index: -1;
+    top: 300px;
+}
+
+@media screen and (max-width:420px) {
+    #box {
+        width: 100%;
+        min-width: 150px;
+        margin: 20px 0 0 0;
+    }
+    #time {
+        width: 250px;
+        height: 250px;
+        margin: 10px auto 0;
+    }
+    #timeText,
+    #timeNum {
+        font-size: 1.2em;
+    }
+    #timeBack {
+        height: 250px;
+        width: 250px;
+        top: 250px;
+    }
+}
+```
+
+JS:
+```javascript
+$(function() {
+    var greenTimer = null;
+    var status = "wait";
+    var runColor = true;
+    //定义初始变量。
+    var timeHeight = $("#time").css("height");
+    // 获取当前div色块的高度。
+    function add(num) {
+        var numText = num.text();
+        if (numText > 24) {
+            numText = 25;
+            alert("超过最大时长！");
+        } else {
+            numText++;
+        }
+        num.text(numText);
+    }
+    // +号按钮函数
+    function less(num) {
+        var numText = num.text();
+        if (numText < 2) {
+            numText = 1;
+            alert("超过最小时长！");
+        } else {
+            numText--;
+        }
+        num.text(numText);
+    }
+    // -号按钮的函数
+    function powerSwitch() {
+        if (runColor == true) {
+            $("#sessionAdd,#sessionLess").click(function(event) {
+                $("#timeNum").text($("#sessionText").text());
+                $("#timeBack").css('top', '300px');
+            });
+        } else {
+            $("#breakAdd,#breakLess").click(function(event) {
+                $("#timeNum").text($("#breakText").text());
+                $("#timeBack").css('top', '300px');
+            });
+
+        }
+    }
+    // 根据颜色判断当前状态后，使时间文字根据所判断的状态按钮改变。
+    function changeSwitch() {
+        if (runColor == true) {
+            $("#sessionAdd,#sessionLess").removeAttr("disabled");
+        } else if (runColor == false) {
+            $("#breakAdd,#breakLess").removeAttr("disabled");
+        }
+    }
+    // 取消按钮禁用
+    function run() {
+        if ($("#timeNum").text().length < 3) {
+            var sum = (($("#timeNum").text()) * 60) - 1;
+        } else {
+            var oldsum = $("#timeNum").text();
+            var a = Number((oldsum[0]) * 60);
+            var b = Number((oldsum[2]) * 10);
+            var c = Number(oldsum[3]);
+            var sum = parseInt(a + b + c, 10);
+        }
+        $("#timeNum").text(Math.floor(sum / 60) + ":" + (sum % 60));
+        var topNum = $("#timeBack").css('top').replace("px", "");
+        var speed = topNum / sum;
+        greenTimer = setInterval(function() {
+            console.log($("#timeBack").css('top'));
+            sum--;
+            topNum -= speed;
+            var minute = Math.floor(sum / 60);
+            var second = (sum % 60);
+            if (second < 10) {
+                second = "0" + second;
+            }
+            $("#timeNum").text(minute + ":" + second);
+            $("#timeBack").css('top', Math.round(topNum-speed) + "px");
+            if (minute == 0 && second == 00) {
+                clearInterval(greenTimer);
+                if (runColor == true) {
+                    halt();
+                } else if (runColor == false) {
+                    initial();
+                }
+            }
+        }, 1000);
+    }
+    // 运行函数
+    $(".add").click(function(event) {
+        add($(this).siblings("span"));
+    });
+    $(".less").click(function(event) {
+        less($(this).siblings("span"));
+    });
+    // 点击-、+号按钮更改休息或者工作时长。
+    function pause() {
+        $("#time").click(function(event) {
+            if (status == "wait") {
+                $(".add,.less").attr('disabled', "true");
+                run();
+                status = "working";
+            } else if (status == "working") {
+                clearInterval(greenTimer);
+                changeSwitch();
+                powerSwitch();
+                status = "wait";
+            }
+        });
+    }
+    // 判断程序是否在运行中。且随着程序的运行更改状态。
+    function halt() {
+        runColor = false;
+        $("#timeBack").css('top', timeHeight);
+        $("#timeBack").css('background-color', 'rgb(255, 68, 68)');
+        $("#timeText").text('Break!');
+        $("#timeNum").text($("#breakText").text());
+
+        run();
+    }
+    // 休息时间的函数。
+    function initial() {
+        $("#timeBack").css({
+            "top":timeHeight,
+            "background-color": "#99CC00"
+        }, "1");
+        $("#timeText").text('Session');
+        $("#timeNum").text($("#sessionText").text());
+        runColor = true;
+        status = "wait";
+        $(".add,.less").removeAttr("disabled");
+    }
+    // 暂停运行。
+    pause();
+    powerSwitch();
+
+})
+```
+**当然，最好的工具，永远是人类的意志力。**
