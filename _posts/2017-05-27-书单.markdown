@@ -1,0 +1,29 @@
+---
+layout: post
+title:  书单
+date:   2017-05-27 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: 201703/bg/book.jpg # Add image post (optional)
+tags: [书单,安利]
+author: Oriel # Add name author (optional)
+---
+**书籍是人类进步的阶梯——高尔基。**
+
+**书是学习的过程中必不可少的东西，之前一直想总结一下在前端学习的过程中对于理解和学习知识有帮助的一些书，已经看过的作为记录一下，没看过的则希望以后可以看完。**
+
+HTML：
+1.  《Head first HTML&CSS》最好的入门书。
+
+CSS:
+1. 《CSS权威指南（第三版）》最权威的CSS书籍，除了阅读W3C的文档外的不二选择（就是翻译有点操蛋，遇到感到难理解的地方可能还是要求助于网络资源）。有时间（无论是现在还是将来）可以反复看，并当做字典随时查。
+2. 《精通CSS》
+3. 《图解CSS3：核心技术与案例实践》
+4. 《CSS秘密花园》
+
+JS:
+1. 《JavaScript高级程序设计》俗称红宝书，也算入门书籍，虽然是大部头（七百多页），但至少通读一遍。
+2. 《JavaScript语言精粹》也是前端必看。一百来页，对JS的去粗取精。
+3. 《JavaScript DOM编程艺术》JS入门书籍。
+4. 《JavaScript权威指南》号称“圣经”，最权威的JS书本。
+
+**其实，无论是书也好，还是书单也好，都并不是重点，最重要的是，列好书单后持之以恒的读下去，写下去。坚持，才是最好的书籍。**
