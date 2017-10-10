@@ -7,7 +7,7 @@ img: 201703/bg/time.jpg # Add image post (optional)
 tags: [DEMO,FCC]
 author: Oriel # Add name author (optional)
 ---
-**如果说时间是人类最富有的财富的话，那么拖延症就是人类在赚取财富道路上最大的绊脚石。从古至今，有无数人绊倒在拖延症这个坑里。作为一个自制力不够的人，这时候就需要一款行之有效的工具来帮助我们跨过拖延症这个坑了。而[番茄钟](https://baike.baidu.com/item/%E7%95%AA%E8%8C%84%E9%92%9F/5944754?fr=aladdin "番茄钟")当然是最为有效的工具软件之一。**
+**如果说时间是人类最富有的财富的话，那么拖延症就是人类在赚取财富道路上最大的绊脚石。从古至今，有无数人绊倒在拖延症这个石头上。作为一个自制力不够的人，这时候就需要一款行之有效的工具来帮助我们跨过拖延症这个坑了。而[番茄钟](https://baike.baidu.com/item/%E7%95%AA%E8%8C%84%E9%92%9F/5944754?fr=aladdin "番茄钟")当然是最为有效的工具软件之一。**
 
 DEMO：[番茄钟](https://oriellee.github.io/FCC/%E7%95%AA%E8%8C%84%E9%92%9F/index.html "番茄钟")
 
