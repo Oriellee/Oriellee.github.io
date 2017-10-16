@@ -1,0 +1,491 @@
+---
+layout: post
+title:  西蒙游戏
+date:   2017-09-02 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: 201703/bg/simon.jpg # Add image post (optional)
+tags: [DEMO,FCC]
+author: Oriel # Add name author (optional)
+---
+应该有很多人小时候都玩过一个游戏——[simon game](https://en.wikipedia.org/wiki/Simon_(game) "simon game")。翻译过来就是西蒙游戏。然而我并没有玩过~前几天看到这个小游戏的练习题，就顺带做一下。。。。。。可能会用来闲的时候玩一玩吧？。。。
+
+这个小游戏的难点在于机器先按顺序闪烁色块，然后玩家手工点击之前所闪烁过的色块。
+第二个难点在于如果一个不小心的话。。。你的色块看起来会像是一个游泳圈。。。或者是数码宝贝球。。。
+
+[DEMO](https://codepen.io/Em-Ant/full/QbRyqq/ "DEMO")
+
+![截图]({{site.baseurl}}/assets/img/201703/simon.png)
+
+要求：
+1. 色块亮起的顺序是随机的.
+2. 每次以正确的顺序点击色块后, 色块需要以原来的顺序依次亮起, 并增加一个新的序列.
+3. 当色块自动按顺序亮起时, 以及用户点击色块时.
+4. 当用户点错时, 要以不同的声音提示用户, 色块需要能以原来的顺序亮起并让用户重试.
+5. 可以看到当前游戏中点对的色块序列的数量.
+6. 可以通过点击一个按钮重新开始游戏, 并且游戏会重新从一个序列开始.
+7. 可以在严格模式下游戏, 即严格模式下一旦输错任意一个序列都必须从头开始
+8. 在输入正确 20 个序列时获胜。将会提示胜利, 并结束游戏。
+
+完整代码：
+HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>西蒙游戏</title>
+</head>
+
+<body>
+    <div id="box">
+        <div id="boxTop">
+            <button id="green" disabled="disabled"></button>
+            <button id="red" disabled="disabled"></button>
+        </div>
+        <div id="boxBottom">
+            <button id="yellow" disabled="disabled"></button>
+            <button id="blue" disabled="disabled"></button>
+        </div>
+        <div id="boxCenter">
+            <h3>FREE</h3>
+            <div id="buttonGroup">
+                <div id="count" class="col-xs-4 col-sm-4 col-md-4">
+                    <div></div><p>COUNT</p>
+                </div>
+                <div id="start" class="col-xs-4 col-sm-4 col-md-4">
+                    <button disabled="disabled"></button>
+                    <p>START</p>
+                </div>
+                <div id="strict" class="col-xs-4 col-sm-4 col-md-4">
+                    <span></span>
+                    <button disabled="disabled"></button>
+                    <p>STRICT</p>
+                </div>
+            </div>
+            <div id="power">
+              <span>OFF</span>
+                <div id="powerbutton">
+                    <span></span>
+                    <div style="clear: both;"></div>
+                </div>
+                <span>ON</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
+```
+
+CSS
+
+```css
+html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #F1F8E9;
+}
+
+button {
+    outline: none;
+}
+
+#box {
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: #333;
+    box-shadow: 0px 0px 0px 20px #333;
+    overflow: hidden;
+    top: calc(50% - 215px);
+    left: calc(50% - 215px);
+    position: absolute;
+}
+
+#boxTop,
+#boxBottom {
+    width: 100%;
+    height: 50%;
+}
+
+#green,
+#red,
+#yellow,
+#blue {
+    height: 98%;
+    width: 48%;
+    display: inline-block;
+    float: left;
+    outline: none;
+    border: none;
+}
+
+#green {
+    background-color: #1BBC9B;
+    margin-right: 4%;
+}
+
+#red {
+    background-color: #EF4836;
+}
+
+#yellow {
+    margin-right: 4%;
+    margin-top: 4%;
+    background-color: #F5D76E;
+}
+
+#blue {
+    background-color: #52B3D9;
+    margin-top: 4%;
+}
+
+#boxCenter {
+    width: 220px;
+    height: 220px;
+    position: absolute;
+    border-radius: 100%;
+    top: calc(50% - 110px);
+    left: calc(50% - 110px);
+    background-color: #ECE7EE;
+    border: 12px solid #333;
+    overflow: hidden;
+}
+
+#boxCenter * {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    color: black;
+}
+
+#boxCenter h3 {
+    width: 100%;
+    font-size: 3.5em;
+    font-weight: bolder;
+    margin-top: 10%;
+}
+
+#buttonGroup {
+    width: 80%;
+    height: 37%;
+    margin: 0 10%;
+}
+
+#buttonGroup>div {
+    height: 100%;
+}
+
+#buttonGroup>div {
+    font-size: 0.5em;
+    font-weight: bold;
+}
+
+#count div:nth-child(1) {
+    font-family: 'VT323', monospace;
+    color: #DC0D29;
+    font-size: 3em;
+    font-weight: bolder;
+    width: 100%;
+    background-color: #32050C;
+    border: 4px solid #222;
+    border-radius: 20%;
+    margin: auto;
+    height: 55%;
+    line-height: 1.5;
+    margin: 10% 0 0 0;
+    vertical-align: top;
+}
+#count>p {
+        margin-top: 10%;
+    }
+#start button,
+#strict button:nth-child(2) {
+    width: 48%;
+    height: 35%;
+    border-radius: 50%;
+    border: 3px solid #222;
+    margin: 35% 0 10% 0;
+    background-color: red;
+    box-shadow: 0px 1px 2px 1px #32050C;
+}
+
+#strict>span {
+    width: 14%;
+    height: 10.1%;
+    background-color: #222;
+    border-radius: 100%;
+    display: block;
+    margin: 10% auto 1%;
+    border: 1px solid black;
+}
+
+#strict button:nth-child(2) {
+    margin: 10% 0 10%;
+    background-color: yellow;
+}
+
+#power {
+    width: 50%;
+    margin: 0 25%;
+    height: 30px;
+    font-size: 0.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#powerbutton {
+    width: 40%;
+    height: 66%;
+    background-color: #333;
+    padding: 3%;
+}
+
+#powerbutton span {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: #3193DE;
+    border-radius: 3px;
+}
+
+
+@media screen and (max-width: 470px) {
+    #box {
+        width: 260px;
+        height: 260px;
+        top: calc(50% - 130px);
+        left: calc(50% - 130px);
+        box-shadow: 0px 0px 0px 15px #333;
+    }
+    #boxCenter {
+        width: 130px;
+        height: 130px;
+        top: calc(50% - 65px);
+        left: calc(50% - 65px);
+        border: 8px solid #333;
+        font-size: 0.7em;
+    }
+    #boxCenter h3 {
+        font-size: 2.5em;
+    }
+    #boxCenter p,
+    #power {
+        font-size: 9px;
+        -webkit-transform: scale(0.7);
+        -o-transform: scale(1);
+    }
+    #count div:nth-child(1) {
+        line-height: 2;
+        text-align: center;
+        font-size: 1em;
+        margin-top: 5px;
+    }
+    #count>p {
+        margin: -8px;
+    }
+    #power {
+        width: 100%;
+        margin: 0;
+    }
+}
+```
+
+JS
+
+```javascript
+$(function() {
+    var game = {
+            level: 0,
+            colorArr: ["#green", "#red", "#yellow", "#blue"],
+            currentGame: [],
+            player: [],
+        },
+        moves,
+        stops,
+        timer,
+        strict = false;
+        // 定义初始值
+    $("#powerbutton").click(function(event) {
+        if ($(this).children('span').css('float') == 'left') {
+            $(this).children('span').css('float', 'right');
+            open();
+        } else {
+            $(this).children('span').css('float', 'left');
+            close();
+        }
+    });
+    // 开关键
+    $("#start>button,#strict>button:nth-child(2)")
+        .mousedown(function(event) {
+            $(this).css('box-shadow', 'none');
+        }).mouseup(function(event) {
+            $(this).css('box-shadow', '0px 1px 2px 1px #32050C');
+        });
+        // 按钮点击阴影效果
+    $("#start>button").click(function(event) {
+        setTimeout(flash, 50);
+        setTimeout(newGame, 1000);
+        $("#buttonGroup button").attr('disabled', "true");
+    });
+    // 开始键
+    $("#strict>button:nth-child(2)").click(function(event) {
+        if (strict == false) {
+            $("#strict>span").css('background-color', 'red');
+            strict = true;
+        } else {
+            $("#strict>span").css('background-color', '#32050C');
+            strict = false;
+        }
+    });
+    // 开始严格模式
+    function newGame() {
+        clearGame();
+    }
+    // 开始程序
+    function clearGame() {
+        game.currentGame = [];
+        game.level = 0;
+        addCount();
+    }
+    // 首先清空原有的操作。
+    function addCount() {
+        $("#green,#red,#yellow,#blue").attr('disabled', 'true');
+        game.level++;
+        $("#count>div").text(game.level);
+        generateMove();
+    }
+    // 关数+1，且显示出来。
+    function generateMove() {
+        game.currentGame.push(game.colorArr[random(0, 4)]);
+        showMoves();
+    }
+    // 选择一个随机的颜色添加到队列中，并继续运行。
+    function showMoves() {
+        $("#green,#red,#yellow,#blue").attr('disabled', 'true');
+        game.player = [];
+        var i = 0;
+        moves = setInterval(function() {
+            stops = setTimeout(function() {
+                $("#green,#red,#yellow,#blue").removeAttr("disabled");
+            }, 800 * game.level);
+            $(game.currentGame[i]).fadeOut(150).fadeIn(150);
+            i++;
+            if (i >= game.currentGame.length) {
+                clearInterval(moves);
+            }
+        }, 800);
+        setTimeout(wait, 800 * game.level);
+    }
+    // 使队列中的色块按照顺序闪烁一次。
+    function wait() {
+        var z = 0;
+        timer = setInterval(function() {
+            z++;
+            if (z > 6) {
+                check();
+                clearInterval(timer);
+            }
+        }, 1000);
+    }
+    // 延时等待6秒后调用check函数。
+    $("#green,#red,#yellow,#blue").click(function(event) {
+        clearInterval(timer);
+        $(this).fadeOut(50).fadeIn(50);
+        addToPlayer($(this).attr("id"));
+    });
+    // 点击色块效果。
+    function addToPlayer(id) {
+        game.player.push("#" + id);
+        check();
+    }
+    // 将所点击的色块加入到玩家队列中。
+    function check() {
+        if (game.player.length < 1) {
+            if (strict == false) {
+                setTimeout(function() {
+                    $("#count>div").text("! !");
+                }, 200);
+                setTimeout(flash, 600);
+                setTimeout(function() {
+                    $("#count>div").text(game.level);
+                }, 1600);
+                setTimeout(showMoves, 1700);
+            } else {
+                newGame();
+            }
+
+        }
+        // 如果6秒内无操作，且非严格模式下，程序闪烁重新一次。
+        if (game.player[game.player.length - 1] !== game.currentGame[game.player.length - 1]) {
+            alert("走错啦！请重头再来吧！");
+            newGame();
+        } else {
+            if (game.player.length === game.currentGame.length) {
+                if (game.level === 20) {
+                    alert("通关啦！");
+                } else {
+                    addCount();
+                }
+            }
+        }
+    }
+
+    function random(min, max) {
+        var randomNum = Math.floor(Math.random() * (max - min)) + min;
+        return randomNum;
+    }
+    // 生成一个随机数。
+    function flash() {
+        setTimeout(function() {
+            $("#count>div").css('color', '#32050C');
+        }, 200);
+        setTimeout(function() {
+            $("#count>div").css('color', 'red');
+        }, 400);
+        setTimeout(function() {
+            $("#count>div").css('color', '#32050C');
+        }, 600);
+        setTimeout(function() {
+            $("#count>div").css('color', 'red');
+        }, 800);
+    }
+    // 闪烁效果。
+    function open() {
+        $("#count div").eq(0).text('- -');
+        $("#buttonGroup button").removeAttr("disabled");
+    }
+    // 开启效果。
+    function close() {
+        strict = false;
+        $("#strict>span").css('background-color', '#32050C');
+        clearInterval(moves, timer);
+        var biggestTimeoutId = window.setTimeout(function() {}, 1),
+            i;
+        for (i = 1; i <= biggestTimeoutId; i++) {
+            clearTimeout(i);
+        }
+        $("#count div").eq(0).text('');
+        $("#buttonGroup button").attr('disabled', "true");
+        $("#green,#red,#yellow,#blue").attr('disabled', 'true');
+    }
+    // 关闭程序效果。
+})
+```
+
+代码有点多。有部分功能和细节仍需要优化。欢迎大家指正。
+转载请注明出处。

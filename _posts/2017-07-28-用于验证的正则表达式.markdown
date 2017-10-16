@@ -137,3 +137,5 @@ author: Oriel # Add name author (optional)
     var cnPattern = /[\u4E00-\u9FA5]/;
     //输出 true
     console.log(cnPattern.test("oriel"));
+
+正则表达式出处：http://caibaojian.com/form-regexp.html
