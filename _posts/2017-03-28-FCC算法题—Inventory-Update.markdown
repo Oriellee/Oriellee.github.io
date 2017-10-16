@@ -55,3 +55,5 @@ var newInv = [
 updateInventory(curInv, newInv);
 
 ```
+
+转载请注明出处。

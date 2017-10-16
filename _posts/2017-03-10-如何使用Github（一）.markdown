@@ -78,7 +78,7 @@ author: Oriel # Add name author (optional)
 
 **现在我们已经完成了github的安装和注册，同时也新建了我们的第一个仓库和第一个文档。在下一篇教程中，我会介绍一下github的分支部分。下一篇见啦~**
 
-
+转载请注明出处。
 文中图片及部分文字by：[杨晓辉](https://www.zhihu.com/question/20070065/answer/117017972 "杨晓辉")
 
 
