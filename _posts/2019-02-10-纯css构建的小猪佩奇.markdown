@@ -3,7 +3,7 @@ layout: post
 title:  纯css构建的小猪佩奇。
 date:   2019-02-10 11:00:00 +0800
 description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
-img: 201703/bg/time.jpg # Add image post (optional)
+img: pig/page.png # Add image post (optional)
 tags: [DEMO]
 author: Oriel # Add name author (optional)
 ---
