@@ -20,16 +20,18 @@ author: Oriel # Add name author (optional)
     django
     redis
     mysql
+
 下面我们正式开搭建框架。
 
 ##### 使用pycharm专业版，new一个新的django项目。
-	![截图]({{site.baseurl}}/assets/img/vueFlame/1.png)
+   ![截图]({{site.baseurl}}/assets/img/vueFlame/1.png)
 
 选择项目目录，第三个地方选择创建一个app的目录，并输入app的名称。porject可以包含多个app，在一般应用中，一个app表示一个服务类文件。
 
 
 在myproject下的settings.py配置文件中，把默认的sqllite3数据库换成我们的mysql数据库：
-```python
+```
+python
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
@@ -42,7 +44,8 @@ DATABASES = {
 ```
 django新版本会主动将默认的app添加到installed_app中，所以无需再次添加，但是之后新建的app需要手动添加。
 
-		![截图]({{site.baseurl}}/assets/img/vueFlame/3.png)
+   ![截图]({{site.baseurl}}/assets/img/vueFlame/2.png)
+   
 在app目录下的models下写一个model：
 ```python
 class Menus(models.Model):
@@ -95,7 +98,7 @@ python manage.py migrate
 第二行代码是将上面的语句，插入项目所连接的数据库中。
 - django，setting页面中，添加 django-cors-headers的中简件，解决django的跨域问题。
 
-
+```python
     MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -107,10 +110,11 @@ python manage.py migrate
     'django.middleware.clickjacking.XFrameOptionsMiddleware',]
     
     CORS_ORIGIN_ALLOW_ALL = True
+```
 
 - 配置，django的url连接首页指向哪个页面。在项目中的url文件中配置。
 
-
+```python
     from django.contrib import admin
     from django.conf.urls import url, include
     from django.views.generic import TemplateView
@@ -121,10 +125,11 @@ python manage.py migrate
     url(r'^api/', include(user.url)),
     url(r'^$', TemplateView.as_view(template_name="index.html")),
     ]
+```
 
 - 上一步使用了Django的模板系统，所以需要配置一下模板使Django知道从哪里找到index.html。在project目录的settings.py下：
 
-
+```python
     TEMPLATES = [
     {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -140,13 +145,15 @@ python manage.py migrate
     },
     },
     ]
+```
+
 - 以及界面的默认路径：
 
-
+```python
     STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "frontend/dist"),
     ]
-
+```
 
 1. 在项目目录下，打开cmd命令行，输入vue-ui，在可视化界面中创建vue项目。
 2. 点击App.vue，修改html代码，为路由。
@@ -163,11 +170,11 @@ python manage.py migrate
 13. 后台配置完成跨域以及前后端分离连接以后，需要前端配置前端的路径。
 14. 在src文件夹下创建static文件，将除了main.js之外的所有文件全部放入。
 
-		![截图]({{site.baseurl}}/assets/img/vueFlame/2.png)
+   ![截图]({{site.baseurl}}/assets/img/vueFlame/3.png)
 
 - 在前端主目录下，创建vue.config.js文件，在文件中编写如下内容。
 
-
+```python
     module.exports = {
     baseUrl: '/static/',//打包时在url中寻找的路径。
     outputDir: 'dist',//打包所存放的路径。
@@ -186,10 +193,11 @@ python manage.py migrate
     },
     lintOnSave: false,//编译时，config是否报错。
     };
+```
 
 ##### 整体框架搭建，大概就结束了，剩下的就是封装编写页面了。具体的完整代码我会在下面放出连接。
-		![截图]({{site.baseurl}}/assets/img/vueFlame/4.png)
-		![截图]({{site.baseurl}}/assets/img/vueFlame/5.gif)
+   ![截图]({{site.baseurl}}/assets/img/vueFlame/4.png)
+   ![截图]({{site.baseurl}}/assets/img/vueFlame/5.gif)
 
 [完整代码](https://github.com/Oriellee/VUE/tree/master/simpleframe "完整代码")
 完整代码中我封装了几个前端常用的组件。
