@@ -1,0 +1,78 @@
+---
+layout: post
+title:  css笔记。
+date:   2018--01-11 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: 201703/bg/html.jpg # Add image post (optional)
+tags: [DEMO]
+author: Oriel # Add name author (optional)
+---
+
+
+整理了一下近期做的和css有关的笔记。在这里汇总一下。
+
+- css字体颜色渐变
+```css
+background: linear-gradient(to right, #fff5d9, #ffe8ba);
+        -webkit-background-clip: text;
+        color: transparent;
+```
+
+   ![截图]({{site.baseurl}}/assets/img/cssdemo/1.png)
+
+- 边框渐变色
+```css
+.border-block {
+  border: 10px solid transparent;
+  border-image: linear-gradient(to top, #F80, #2ED);
+  border-image-slice: 10;
+}
+```
+
+   ![截图]({{site.baseurl}}/assets/img/cssdemo/2.png)
+
+- 纯css制作的轮播页
+```
+	.father_box {
+    width: 1536px;
+    border: 1px solid red;
+    transition: all 500ms ease-in-out 0s;
+}
+@-webkit-keyframes change{
+    0%{
+        margin-left:0;
+    }
+    14%{
+        margin-left:0;
+    }
+    16.5%{
+        margin-left:-768px;
+    }
+
+    33%{
+        margin-left:-768px;
+    }
+    47%{
+        margin-left:-768px;
+    }
+    49.5%{
+        margin-left:-1536px;
+    }
+    66%{
+        margin-left:-1536px;
+    }
+    82.4%{
+        margin-left:-1536px;
+    }
+    82.5%{
+        margin-left:0px;
+    }
+    100%{
+        margin-left:0px;
+    }
+}
+```
+
+   
+
+转载请注明出处。
