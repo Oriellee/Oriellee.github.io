@@ -1,0 +1,89 @@
+---
+layout: post
+title:  leetcode问题与答案
+date:   2018-05-06 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: leetcode.jpg # Add image post (optional)
+tags: [算法]
+author: Oriel # Add name author (optional)
+---
+
+
+这几天刷leetcode的题，有几道题找了第二种方法。
+
+- 从排序数组中删除重复项
+
+
+    给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+    不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+
+答案：
+```javascript
+var removeDuplicates = function(nums) {
+    a = unique(nums)
+    nums.splice(0,nums.length)
+    for(var i=0;i<a.length;i++){
+        if(!isNaN(a[i]))
+        nums.push(a[i])
+    }
+};
+
+// 方法a。
+var unique = (a) => [...new Set(a)]
+
+// 方法b。
+// var unique = (a) =>{    
+//     var b = []
+//     for (var i=0,alen = a.length;i<alen;i++){
+//         var flag = true
+//         for (var j=0,blen = b.length;j<blen;j++){
+//             if(a[i] === b[j]){
+//                 flag = false
+//                 break;
+//             }
+//         }
+//         if(flag == true){
+//             b.push(a[i])
+//         }
+//     }
+//     return b
+// }
+```
+
+- 给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
+
+```javascript
+	// 方法1.
+	var rotate = function(nums, k) {
+    	a = nums.splice(nums.length-k,k)
+    	a.reverse()
+    	for (var i=0;i<a.length;i++){
+        	nums.unshift(a[i])
+   	 }
+
+
+// 方法2.
+    for (var i=0;i<k;i++){
+        a = nums.splice(nums.length-1,1)
+        nums.unshift(a)
+    }
+};
+```
+
+- 两个数组的交集 II
+
+```javascript
+	var intersect = function(nums1, nums2) {
+    	c = nums1.filter(v => nums2.indexOf(v)!=-1)
+    
+    // 第二种方法。
+    // let set1 = new Set(nums1),set2 = new Set(nums2);
+    // c = [...new Set([...set1].filter( x => set2.has(x)))];
+    return c
+};
+```
+
+
+   
+
+转载请注明出处。
