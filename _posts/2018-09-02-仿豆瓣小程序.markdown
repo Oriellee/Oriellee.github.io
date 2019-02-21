@@ -23,7 +23,7 @@ author: Oriel # Add name author (optional)
 
 
 
-完整代码在下方。
+最后成果如下图：
 
    ![截图]({{site.baseurl}}/assets/img/douban/3.png)
    ![截图]({{site.baseurl}}/assets/img/douban/4.png)
