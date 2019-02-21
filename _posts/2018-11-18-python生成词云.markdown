@@ -1,0 +1,78 @@
+---
+layout: post
+title:  python生成词云
+date:   2018-11-18 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: cy/3.png # Add image post (optional)
+tags: [DEMO]
+author: Oriel # Add name author (optional)
+---
+
+
+**前几天公司写ppt，要弄几个词云，正好python和echart都支持这个，所以就直接拿python上手了。代码比较简单，差不多十几行就可以弄出一个漂亮的词云。**
+
+------------
+需要使用的类库：
+- PIL
+- matplotlib
+- numpy
+- wordcloud
+- jieba
+
+**首先词云我弄了两种，第一种是直接生成的，第二种是按照图片样式生成的。**
+直接上代码，第一种：
+```python
+from PIL import Image
+from wordcloud import WordCloud, ImageColorGenerator
+import matplotlib.pyplot as plt
+import numpy as np
+import jieba
+
+def normalDraw():
+    path_txt = 'C:/Users/oriel/Desktop/1.txt'
+    f = open(path_txt, 'r', encoding='UTF-8').read()
+    wordcloud = WordCloud(font_path="C:/Windows/Fonts/simfang.ttf",background_color="black",width=2000, height=1060, margin=2).generate(f)
+    plt.imshow(wordcloud)
+    plt.axis("off")
+    plt.show()
+```
+
+   ![截图]({{site.baseurl}}/assets/img/cy/1.png)
+
+
+第二种：
+```python
+from PIL import Image
+from wordcloud import WordCloud, ImageColorGenerator
+import matplotlib.pyplot as plt
+import numpy as np
+import jieba
+
+def draw():
+    path_txt = 'C:/Users/oriel/Desktop/1.txt'
+    path_img = "C:/Users/oriel/Desktop/2.jpg"
+    f = open(path_txt, 'r', encoding='UTF-8').read()
+    background_image = np.array(Image.open(path_img))
+    # 结巴分词，生成字符串，如果不通过分词，无法直接生成正确的中文词云,感兴趣的朋友可以去查一下，有多种分词模式
+    # Python join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。
+    cut_text = " ".join(jieba.cut(f))
+    wordcloud = WordCloud(
+        # 设置字体，不然会出现口字乱码，文字的路径是电脑的字体一般路径，可以换成别的
+        font_path="C:/Windows/Fonts/simfang.ttf",
+        background_color="white",
+        # mask参数=图片背景，必须要写上，另外有mask参数再设定宽高是无效的
+        mask=background_image).generate(cut_text)
+    # 生成颜色值
+    image_colors = ImageColorGenerator(background_image)
+    # 下面代码表示显示图片
+    plt.imshow(wordcloud.recolor(color_func=image_colors), interpolation="bilinear")
+    plt.axis("off")
+    plt.show()
+```
+
+   ![截图]({{site.baseurl}}/assets/img/cy/2.png)
+
+
+   
+
+转载请注明出处。
