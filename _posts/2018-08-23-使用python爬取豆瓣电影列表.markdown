@@ -34,7 +34,7 @@ def getTags():
     print(tags)
     return tags
 ```
-##### 接下来第二部，是根据该标签列表，获取每个标签的前一百部电影。
+##### 接下来第二步，是根据该标签列表，获取每个标签的前一百部电影。
 ```python
 # 获取每个tags下面的前两页电影。
 def getMovies(tags):
@@ -76,7 +76,7 @@ def write2excel(data,name,path):
 ```
 其中第二段代码是将获取到的电影列表写入了一个excel以方便存档。
 
-最后一步，是通过第二步爬取的电影中的电影详情页链接获取每个电影的详情信息的。
+##### 最后一步，是通过第二步爬取的电影中的电影详情页链接获取每个电影的详情信息的。
 
 ```python
 def get_url_list(excel_file):

@@ -1,0 +1,40 @@
+---
+layout: post
+title:  仿豆瓣小程序
+date:   2018-09-02 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: douban/1.png # Add image post (optional)
+tags: [DEMO]
+author: Oriel # Add name author (optional)
+---
+上一篇介绍了怎么爬取豆瓣的电影数据，这一篇，要讲的就是我做仿豆瓣的小程序的大概感想了。小程序当下，对比于其他的语言或者框架，还是一门比较新的东西，但是热度非常的高，而且实际生活中，小程序使用起来也很方便，不需要安装，即用即走。很符合微信一惯的概念。
+在开发小程序之前，我了解了一下小程序的项目部署问题，发现除了传统的服务器端部署之外，小程序还推出了一个云开发。简介写的非常的诱人，不需要服务器和域名，省去部署的步骤，而聚焦在代码层面。看的我有点跃跃欲试，最后决定尝试一下。
+不过实验的结果并不是很好，云开发用起来比较轻便，可以省去很多部署和前后端交接的问题，而且还自带了存储库和数据库，但是在实际开发中，对于数据库的操作就比较费事了，因为它使用的是自己的东西，但是很多并不全，所以开发起来比较费事，所以我还是比较推荐大家直接使用服务器部署的方式。
+
+##### 具体开发的时候，我选择了微信官方的开通方案，node.js方案。
+[开发方案](https://cloud.tencent.com/document/product/619/11447 "开发方案")
+文档写的很全，也很细致，我这里也就不多说了。
+部署好以后，文档结构如下图。
+
+   ![截图]({{site.baseurl}}/assets/img/douban/2.png)
+
+其中client文件夹主要是前端代码，server文件夹是接口层的代码，接口层是直接通过数据库交互工具，使用sql语言进行查询后，用js进行编辑的，所以使用起来对前端人员非常友好。
+剩下的就是编写前端页面以及后台接口。具体的过程小程序官方文档很详细可以直接查看。
+
+
+
+完整代码在下方。
+
+   ![截图]({{site.baseurl}}/assets/img/douban/3.png)
+   ![截图]({{site.baseurl}}/assets/img/douban/4.png)
+   ![截图]({{site.baseurl}}/assets/img/douban/5.png)
+   ![截图]({{site.baseurl}}/assets/img/douban/6.png)
+   ![截图]({{site.baseurl}}/assets/img/douban/7.png)
+  
+
+完整代码：[完整代码](https://github.com/Oriellee/WeChat/tree/master/doubanmovie)
+
+
+   
+
+转载请注明出处。
