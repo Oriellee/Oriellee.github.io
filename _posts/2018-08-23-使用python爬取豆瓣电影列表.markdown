@@ -1,0 +1,164 @@
+---
+layout: post
+title:  使用python爬取豆瓣电影列表
+date:   2018-08-23 11:00:00 +0800
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: douban/1.png # Add image post (optional)
+tags: [DEMO]
+author: Oriel # Add name author (optional)
+---
+
+
+**这几天在弄小程序，因为一直比较喜欢看电影，所以豆瓣平时用的很多，最后决定做一个仿豆瓣的小程序。这就需要大量的电影数据，所以，在看了几个豆瓣页面，写好数据字典以后就开始吭哧吭哧的爬取豆瓣数据了。**
+
+其中主要用到了一下几个类库：
+- pandas
+- numpy
+- xlrd
+- xlsxwriter
+- requests 
+
+在爬取豆瓣的时候，我分为了三步。
+
+##### 第一步，爬取标签，我在豆瓣页面发现了一个可用的标签连接，所以直接用该链接获取了标签列表。
+```python
+# 获取tags。
+def getTags():
+    tags = []
+    url = 'https://movie.douban.com/j/search_tags?type=movie&tag=%E7%83%AD%E9%97%A8&source='
+    response = urllib.request.urlopen(url)
+    result = response.read()
+    # 加载json为字典
+    result = json.loads(result)
+    tags = result['tags']
+    print(tags)
+    return tags
+```
+##### 接下来第二部，是根据该标签列表，获取每个标签的前一百部电影。
+```python
+# 获取每个tags下面的前两页电影。
+def getMovies(tags):
+    subjects = []
+    for tag in tags:
+        url = 'https://movie.douban.com/j/search_subjects?type=movie&tag='+ tag +'&page_limit=100&page_start=0'
+        url = quote(url, safe=string.printable)
+        response = urllib.request.urlopen(url)
+        result = response.read()
+        result = json.loads(result)
+        olddata = result['subjects']
+        for i in olddata:
+            i['type'] = tag
+        subjects += olddata
+    print(subjects)
+    return subjects
+
+# 将数组输出为excel。
+def write2excel(data,name,path):
+    workbook = xlsxwriter.Workbook(path)
+    worksheet = workbook.add_worksheet(name)
+    
+    titlerow=0
+    titlecol=0
+    for key in data[1].keys():
+        worksheet.write(titlerow,titlecol,key)
+        titlecol += 1
+
+    row=1
+    for item in data:
+        col=0
+        for val in item:
+            worksheet.write(row,col,item[val])
+            col += 1
+        row += 1
+
+    workbook.close()
+    return "success"
+```
+其中第二段代码是将获取到的电影列表写入了一个excel以方便存档。
+
+最后一步，是通过第二步爬取的电影中的电影详情页链接获取每个电影的详情信息的。
+
+```python
+def get_url_list(excel_file):
+    newexcel = xlrd.open_workbook(excel_file)
+    sheet_list=open_workbook(excel_file).sheet_names()
+    rettxt = ""
+    movies_url_list = []
+    for sheetname in sheet_list:
+        sheet = newexcel.sheet_by_name(sheetname)
+        df = pd.read_excel(excel_file,sheetname,usecols=[3,6],skiprows=[])
+        for r in df.values:
+            single = {"id":r[1],"url":r[0]}
+            movies_url_list.append(single)
+    return movies_url_list
+
+
+def getHTMLText(url): # 获取网页的HTML源码
+    try:
+        # 设置响应等待时间为30秒
+        r = requests.get(url, timeout=30)
+        # 检查状态码是否为200，否则抛出异常。
+        r.raise_for_status()
+        # 返回请求的相应内容。
+        return r.text
+    except:
+        # 抛出异常则重试
+        return getHTMLText(url)
+
+
+def get_details_list(list):
+    movie_details_list = []
+    movie_start_list = []
+    for i in list:
+        try:
+            movie_info = {}
+            url = i["url"]
+            text = getHTMLText(url)
+                # 将获取到的资源转换为soup对象
+            soup = BeautifulSoup(text)
+                # 找到所有样式为info的标签
+            Name = soup.find(property="v:itemreviewed").string
+            Img = soup.find(rel="v:image")['src']
+            Type=soup.find(property="v:genre").string
+            releaseTime=soup.find(property="v:initialReleaseDate").string
+            Time=soup.find(property="v:runtime").string
+            Addr=soup.find(id='info').find(text = '制片国家/地区:').next_element
+            score=soup.find(property="v:average").string
+            introduction=soup.find(property="v:summary").contents[0].strip()
+            movie_info = {
+                'title':Name,
+                'cover':Img,
+                'type':Type,
+                'releaseTime':releaseTime,
+                'time':Time,
+                'addr':Addr,
+                'rate':score,
+                'introduction':introduction,
+                'movieId':i['id']
+            }
+            movieStart=soup.find_all(class_="info")
+            onemovieStartList = []
+            for idx,child in enumerate(movieStart):
+                movieStartName = child.a.string
+                movieStartType=child.find_all('span')[1].string
+                onemovieStartList.append({'name':movieStartName,'type':movieStartType,'movieName':Name,'movieId':i['id']})
+            movieStartImg=soup.find_all(class_="avatar")
+            for idx,imgChild in enumerate(movieStartImg):
+                startImgUrl =imgChild['style'][22:-1]
+                onemovieStartList[idx]['cover'] = startImgUrl
+            movie_details_list.append(movie_info)
+            movie_start_list += onemovieStartList
+        except Exception as e:
+            continue
+    return {'details':movie_details_list,'starts':movie_start_list}
+```
+具体是通过页面的样式写了一些配对的规则，根据规则获取相应的信息。最后把获取到的详细信息写入到了excel中。
+
+最后算了一下，大概总共爬取了两千多条电影信息，以及四千多条影人的信息。然后把excel导入到数据库中，就可以开始小程序的开发了！
+下面一篇我会大概的介绍一下小程序的构建和开发过程。
+
+
+
+   
+
+转载请注明出处。
